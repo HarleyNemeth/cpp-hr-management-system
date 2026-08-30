@@ -37,7 +37,7 @@ public:
             return;
         }
         for (const auto& emp : Employees) {
-            file << emp.ID << ", " << emp.UserName << ", " << emp.Position << ", " << emp.Salary << ", " << std::endl;
+            file << emp.ID << ", " << emp.UserName << ", " << emp.Age << ", " << emp.Password << ", " << emp.Position << ", " << emp.Salary << ", " << std::endl;
         }
         file.close();
     }
@@ -56,6 +56,9 @@ public:
             getline(ss, temp, ',');
             emp.ID = std::stoi(temp);
             getline(ss, emp.UserName, ',');
+            getline(ss, temp, ',');
+            emp.Age = std::stoi(temp);
+            getline(ss, emp.Password, ',');
             getline(ss, emp.Position, ',');
             getline(ss, temp);
             emp.Salary = std::stod(temp);
@@ -64,6 +67,15 @@ public:
         file.close();
 
     }
+
+	bool Login(const std::string& username, const std::string& password) {
+		for (const auto& emp : Employees) {
+			if (emp.UserName == username && emp.Password == password) {
+				return true; // Login successful
+			}
+		}
+		return false; // Login failed
+	}
     void SaveCVDetails(const std::string& name, const std::string& cv, const std::string& RegistrationData = "RegistrationData.txt") {
         std::ofstream file(RegistrationData, std::ios::app); // Open in append mode to add new entries
         if (!file) {
@@ -135,15 +147,19 @@ int main()
             std::cin >> Username;
             std::cout << "Enter your Password: ";
             std::cin >> Password;
-            std::cout << "Here are the current goals and training courses:\n";
-            std::cout << "5 more jobs to complete\n";
-            std::cout << "1. course for marketing\n";
-            std::cout << "2. course for graphic design\n";
-            std::cout << "3. course for management\n";
-            std::cout << "4. course for programming in c++\n";
-            std::cout << "5. course for programming in python\n";
-            std::cout << "6. course for programming in java\n";
-
+            if (hrms.Login(Username, Password)) {
+                std::cout << "Login successful!\n";
+                std::cout << "Here are the current goals and training courses:\n";
+                std::cout << "5 more jobs to complete\n";
+                std::cout << "1. course for marketing\n";
+                std::cout << "2. course for graphic design\n";
+                std::cout << "3. course for management\n";
+                std::cout << "4. course for programming in c++\n";
+                std::cout << "5. course for programming in python\n";
+                std::cout << "6. course for programming in java\n";
+            } else {
+                std::cout << "Invalid username or password.\n";
+            }
         }
         else if (selection_two == 2) {
             Employee emp;
