@@ -15,16 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Human resource management system.cpp">
+    <ClCompile Include="src\Human resource management system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="savedData.txt">
+    <ClCompile Include="src\employee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\hrms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <None Include="data\savedData.txt">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="RegistrationData.txt" />
-    <Text Include=".gitignore.txt" />
-    <Text Include="cvData.txt" />
+    <None Include="data\RegistrationData.txt" />
+    <None Include=".gitignore.txt" />
+    <None Include="data\cvData.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\employee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hrms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

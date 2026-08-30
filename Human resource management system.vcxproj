@@ -127,13 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Human resource management system.cpp" />
-    <ClCompile Include="savedData.txt" />
+    <ClCompile Include="src\Human resource management system.cpp" />
+    <ClCompile Include="src\employee.cpp" />
+    <ClCompile Include="src\hrms.cpp" />
+    <None Include="data\savedData.txt" />
+    <None Include="data\RegistrationData.txt" />
+    <None Include="data\cvData.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include=".gitignore.txt" />
-    <Text Include="cvData.txt" />
-    <Text Include="RegistrationData.txt" />
+    <ClInclude Include="src\employee.h" />
+    <ClInclude Include="src\hrms.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
