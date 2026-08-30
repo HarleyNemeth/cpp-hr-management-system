@@ -103,20 +103,16 @@ int main()
     
     int selection;
     int selection_two;
-    std::cin.ignore();
     bool validInput = false;
 
-    std::cin >> selection;
-    std::cin >> selection_two;
     while (!validInput) {
+        std::cin >> selection;
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //this means that errors in input
             //will be ignored (if characters are entered)
-            std::cout << "Please select one of the options!\n";
-            std::cin >> selection;
-        }
-        else {
+            std::cout << "Invalid input; please enter a number.\n";
+        } else {
             validInput = true;
         }
     }
@@ -158,6 +154,7 @@ int main()
             getline(std::cin, emp.UserName);
             std::cout << "Enter age ";
             std::cin >> emp.Age;
+            std::cin.ignore();
             std::cout << "Enter Position: ";
             getline(std::cin, emp.Position);
             std::cout << "Enter salary: ";
@@ -181,7 +178,7 @@ int main()
         std::cout << "Please enter your name: ";
         std::cin >> REGName;
         std::cout << "Please paste your CV: ";
-        std::cin >> CV;
+        std::cin.ignore();
         getline(std::cin, CV);
         hrms.SaveCVDetails(REGName, CV);
         std::cout << "CV has been saved successfully.\n";
@@ -190,8 +187,7 @@ int main()
         std::cout << "Invalid option selected.\n";
         break;
     }
-
-    return 0;
-
-
+    std::cout << "Enter any key to exit: ";
+    std::string exitChoice;
+    std::cin >> exitChoice;
     }
